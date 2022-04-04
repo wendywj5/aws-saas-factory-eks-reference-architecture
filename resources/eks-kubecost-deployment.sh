@@ -32,7 +32,7 @@ echo "Provide Kubecost Password"
 htpasswd -c auth kubecost-admin
 kubectl create secret generic kubecost-auth --from-file auth -n kubecost
 
-//Sleep - to wait ext-dns creates A record
+#Sleep - to wait ext-dns creates A record
 sleep 180
 
 echo "Kubecost deployment complete!!"
