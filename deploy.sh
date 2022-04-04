@@ -6,6 +6,7 @@
 : "${STACK_NAME:=$2}"
 : "${DOMAINNAME:=$3}"
 : "${HOSTEDZONEID:=$4}"
+: "${KUBECOSTTOKEN:=$5}"
 
 USAGE_PROMPT="Use: $0 <ADMINEMAIL> <STACKNAME> <DOMAINNAME> <HOSTEDZONEID>\n
 Example: $0 user@email.com test-stack mydomain.com Z01111111111111111111"
@@ -34,6 +35,11 @@ if [[ -z ${HOSTEDZONEID} ]]; then
   exit 2
 fi
 
+if [[ -z ${KUBECOSTTOKEN} ]]; then
+  echo "Hosted Zone ID was not provided."
+  echo -e $USAGE_PROMPT
+  exit 2
+fi
 
 EKS_REF_ROOT_DIR=$(pwd)
 
@@ -120,3 +126,6 @@ sh ./resources/update-eks-node-permissions.sh $EKS_CLUSTER_NAME
 
 echo "Updating the codecommit repo"
 sh ./resources/update-codecommit.sh $STACK_NAME
+
+echo "Updating the kuebcost repo"
+sh ./resources/eks-kubecost-deployment.sh $DOMAINNAME $KUBECOSTTOKEN
