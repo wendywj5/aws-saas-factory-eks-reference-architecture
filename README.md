@@ -1,3 +1,12 @@
+# Difference with original project
+Deploy Kubecost which provides a real-time cost visibility and insights for kubernetes projects.
+
+To deploy kubecost, you need to provide [kubecost token](https://www.kubecost.com/install#show-instructions) when executing deploy.sh
+```bash
+chmod +x deploy.sh
+./deploy.sh <ADMIN_EMAIL> <STACK_NAME> <DOMAIN_NAME> <HOSTED_ZONE_ID> <KUBECOSTTOKEN>
+```
+
 # EKS SaaS - Reference Solution
 
 The code provide here is intended to provide a sample implementation of a SaaS EKS solution. The goal is to provide SaaS developers and architects with working code that will illustrate how multi-tenant SaaS applications can be design and delivered on AWS. The solution covers a broad range of multi-tenant considerations, including tenant isolation, identity, data partitioning, and deployment. It provides developers with a prescriptive approach the the fundamentals of building SaaS solution with EKS. The focus here is more on giving developers a view into the working elements of the solution without going to the extent of making a full, production-ready solution. Instead, we're hoping this can jump start your process and address some of the common challenges that teams must address when delivering a SaaS solution with EKS.
